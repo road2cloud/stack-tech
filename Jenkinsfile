@@ -34,17 +34,7 @@ pipeline {
         }
 
         stage ('Deploy package to Artifactory') {
-          def server = Artifactory.newServer url: 'http://localhost:8081/artifactory', credentialsId: 'artifactory-acess'
-          def uploadSpec = """{
-            "files": [
-              {
-                "pattern": "target/*.jar",
-                "target": "libs-snapshot/stack-tech/"
-              }
-            ]
-          }"""
-
-          server.upload(uploadSpec)
+          
         }
 
     }
