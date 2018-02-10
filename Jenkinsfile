@@ -46,10 +46,13 @@ pipeline {
 
         stage ('Deploy to EC2') {
           steps {
-            ansiblePlaybook(
-              playbook: 'playbook.yml',
-              credentialsId: 'sample-ssh-key',
-              extras: '-e parameter="some value"')
+            sh "chmod 600 MyNVirginiaKey.pem"
+
+            wrap([$class: 'AnsiColorBuildWrapper', colorMapName: "xterm"]) {
+              ansiblePlaybook(
+                playbook: 'playbook.yml',
+                extras: '-e parameter="some value"')
+            }
           }
         }
 
