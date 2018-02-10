@@ -44,5 +44,14 @@ pipeline {
           }
         }
 
+        stage ('Deploy to EC2') {
+          steps {
+            ansiblePlaybook(
+              playbook: 'playbook.yml',
+              credentialsId: 'sample-ssh-key',
+              extras: '-e parameter="some value"')
+          }
+        }
+
     }
 }
