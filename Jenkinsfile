@@ -49,7 +49,6 @@ pipeline {
             wrap([$class: 'AnsiColorBuildWrapper', colorMapName: "xterm"]) {
               ansiblePlaybook(
                 playbook: 'playbook.yml',
-                extras: '-e parameter="some value"',
                 colorized: true)
             }
           }
