@@ -64,11 +64,14 @@
 
     - name: Deploy package
       copy:
-        src: target/stack-tech-0.1.0.jar
+        src: "{{ item }}"
         dest: /home/ec2-user
         owner: ec2-user
         group: ec2-user
-        mode: 0755
+        mode: 0777
+      with_items:
+        - target/stack-tech-0.1.0.jar
+        - config/startup.sh
 
     - name: Start service
-      script: config/startup.sh
+      command: "sh startup.sh"
