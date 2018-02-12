@@ -41,8 +41,8 @@
   gather_facts: False
   remote_user: ec2-user
   become: false
-  vars:
-    ansible_ssh_private_key_file: MyNVirginiaKey.pem
+  #vars:
+  #  ansible_ssh_private_key_file: MyNVirginiaKey.pem
   tasks:
     - name: Uninstall OpenJDK 7
       yum:
@@ -71,4 +71,4 @@
         mode: 0755
 
     - name: Start service
-      shell: "java -jar stack-tech-0.1.0.jar > output.log 2>&1 &"
+      script: config/startup.sh

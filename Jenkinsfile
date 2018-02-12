@@ -46,12 +46,11 @@ pipeline {
 
         stage ('Deploy to EC2') {
           steps {
-            sh "chmod 600 MyNVirginiaKey.pem"
-
             wrap([$class: 'AnsiColorBuildWrapper', colorMapName: "xterm"]) {
               ansiblePlaybook(
                 playbook: 'playbook.yml',
-                extras: '-e parameter="some value"')
+                extras: '-e parameter="some value"',
+                colorized: true)
             }
           }
         }
