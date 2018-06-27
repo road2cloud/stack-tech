@@ -5,7 +5,7 @@
   hosts: localhost
   gather_facts: False
   vars:
-    key_name: MyNVirginiaKey
+    key_name: nvirginia
     instance_type: t2.micro
     security_group: ssh-http
     image: ami-97785bed
