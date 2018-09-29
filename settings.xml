@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.1.0 http://maven.apache.org/xsd/settings-1.1.0.xsd" xmlns="http://maven.apache.org/SETTINGS/1.1.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <servers>
+    <server>
+      <username>admin</username>
+      <password>AP8rh2tEN7fAr1tKVkBqfBD63uw</password>
+      <id>central</id>
+    </server>
+    <server>
+      <username>admin</username>
+      <password>AP8rh2tEN7fAr1tKVkBqfBD63uw</password>
+      <id>snapshots</id>
+    </server>
+  </servers>
+  <!-- <mirrors>
+    <mirror>
+      <mirrorOf>*</mirrorOf>
+      <name>virtual</name>
+      <url>https://mhayani.jfrog.io/mhayani/virtual</url>
+      <id>virtual</id>
+    </mirror>
+  </mirrors> -->
+  <profiles>
+    <profile>
+      <repositories>
+        <repository>
+          <snapshots>
+            <enabled>false</enabled>
+          </snapshots>
+          <id>central</id>
+          <name>virtual</name>
+          <url>https://mhayani.jfrog.io/mhayani/virtual</url>
+        </repository>
+        <repository>
+          <snapshots />
+          <id>snapshots</id>
+          <name>virtual</name>
+          <url>https://mhayani.jfrog.io/mhayani/virtual</url>
+        </repository>
+      </repositories>
+      <pluginRepositories>
+        <pluginRepository>
+          <snapshots>
+            <enabled>false</enabled>
+          </snapshots>
+          <id>central</id>
+          <name>virtual</name>
+          <url>https://mhayani.jfrog.io/mhayani/virtual</url>
+        </pluginRepository>
+        <pluginRepository>
+          <snapshots />
+          <id>snapshots</id>
+          <name>virtual</name>
+          <url>https://mhayani.jfrog.io/mhayani/virtual</url>
+        </pluginRepository>
+      </pluginRepositories>
+      <id>artifactory</id>
+    </profile>
+  </profiles>
+  <activeProfiles>
+    <activeProfile>artifactory</activeProfile>
+  </activeProfiles>
+</settings>
