@@ -1,0 +1,48 @@
+resources:
+- repo: self
+queue:
+  name: Hosted Ubuntu 1604
+steps:
+- task: Docker@0
+  displayName: 'Build an image'
+  inputs:
+    azureSubscription: 'stack-tech - Service Endpoint'
+    azureContainerRegistry: '{"loginServer":"stacktech8fbe.azurecr.io", "id" : "/subscriptions/14550279-859b-4c66-88f9-8641ecfe9e89/resourceGroups/stacktechb5a1/providers/Microsoft.ContainerRegistry/registries/stacktech8fbe"}'
+    imageName: 'stacktech8fbe.azurecr.io/stacktech:$(Build.BuildId)'
+
+- task: Docker@0
+  displayName: 'Push an image'
+  inputs:
+    azureSubscription: 'stack-tech - Service Endpoint'
+    azureContainerRegistry: '{"loginServer":"stacktech8fbe.azurecr.io", "id" : "/subscriptions/14550279-859b-4c66-88f9-8641ecfe9e89/resourceGroups/stacktechb5a1/providers/Microsoft.ContainerRegistry/registries/stacktech8fbe"}'
+    action: 'Push an image'
+    imageName: 'stacktech8fbe.azurecr.io/stacktech:$(Build.BuildId)'
+
+- task: HelmInstaller@0
+  displayName: 'Install Helm 2.9.1'
+  inputs:
+    kubectlVersion: 1.10.3
+    checkLatestKubectl: false
+
+- task: HelmDeploy@0
+  displayName: 'helm init --client-only'
+  inputs:
+    azureSubscription: 'stack-tech - Service Endpoint'
+    azureResourceGroup: stacktechb5a1
+    kubernetesCluster: 'stack-tech'
+    command: init
+    upgradeTiller: false
+    arguments: '--client-only'
+
+- task: HelmDeploy@0
+  displayName: 'helm package'
+  inputs:
+    azureSubscription: 'stack-tech - Service Endpoint'
+    azureResourceGroup: stacktechb5a1
+    kubernetesCluster: 'stack-tech'
+    command: package
+    chartPath: charts/sampleapp
+    save: false
+
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifacts: drop'
