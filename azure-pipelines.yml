@@ -12,7 +12,7 @@ steps:
 
 - task: DownloadSecureFile@1
   inputs:
-    secureFile: settings_azure
+    secureFile: settings
 
 - task: Maven@3
   inputs:
@@ -23,7 +23,7 @@ steps:
     jdkArchitectureOption: 'x64'
     publishJUnitResults: false
     testResultsFiles: '**/TEST-*.xml'
-    goals: "--settings $(Agent.TempDirectory)/settings_azure deploy"
+    goals: "--settings $(Agent.TempDirectory)/settings deploy"
 
 #- task: PublishBuildArtifacts@1
   #inputs:
