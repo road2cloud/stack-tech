@@ -33,5 +33,19 @@
             </plugin>
         </plugins>
     </build>
+    
+    <distributionManagement>
+    <repository>
+        <id>central</id>
+        <name>mhayani-releases</name>
+        <url>https://mhayani.jfrog.io/mhayani/virtual</url>
+    </repository>
+    <snapshotRepository>
+        <id>snapshots</id>
+        <name>mhayani-snapshots</name>
+        <url>https://mhayani.jfrog.io/mhayani/virtual</url>
+    </snapshotRepository>
+</distributionManagement>
+    
 
 </project>
