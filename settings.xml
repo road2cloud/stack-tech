@@ -63,18 +63,15 @@
     </profile>
       <profile>
             <id>sonar</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
             <properties>
-                <sonar.host.url>
-                  https://sonarcloud.io
-                </sonar.host.url>
-                <sonar.organization>road2cloud</sonar.organization>
+                <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+                <sonar.organization>road2cloud-github</sonar.organization>
+                <sonar.projectKey>stack-teck-key</sonar.projectKey>
             </properties>
         </profile>
   </profiles>
   <activeProfiles>
     <activeProfile>artifactory</activeProfile>
+      <activeProfile>sonar</activeProfile>
   </activeProfiles>
 </settings>
