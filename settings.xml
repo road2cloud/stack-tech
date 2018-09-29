@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <settings xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.1.0 http://maven.apache.org/xsd/settings-1.1.0.xsd" xmlns="http://maven.apache.org/SETTINGS/1.1.0"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <servers>
+  <pluginGroups>
+        <pluginGroup>org.sonarsource.scanner.maven</pluginGroup>
+    </pluginGroups>
+    
+    <servers>
     <server>
       <username>admin</username>
       <password>AP8rh2tEN7fAr1tKVkBqfBD63uw</password>
@@ -57,6 +61,18 @@
       </pluginRepositories>
       <id>artifactory</id>
     </profile>
+      <profile>
+            <id>sonar</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <sonar.host.url>
+                  https://sonarcloud.io
+                </sonar.host.url>
+                <sonar.organization>road2cloud</sonar.organization>
+            </properties>
+        </profile>
   </profiles>
   <activeProfiles>
     <activeProfile>artifactory</activeProfile>
