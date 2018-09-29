@@ -1,0 +1,19 @@
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: back-deployment
+
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: back
+    spec:
+      containers:
+        - name: stack-tech
+          image: 556658104288.dkr.ecr.us-east-1.amazonaws.com/lab:latest
+          ports:
+            - name: back-port
+              containerPort: 9000

@@ -1,0 +1,14 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: back-service
+
+spec:
+  ports:
+    - port: 9000
+      targetPort: back-port
+      protocol: TCP
+  selector:
+    app: backapp
+  type: NodePort
