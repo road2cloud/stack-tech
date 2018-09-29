@@ -24,7 +24,7 @@ steps:
     publishJUnitResults: false
     testResultsFiles: '**/TEST-*.xml'
     #goals: "--settings $(Agent.TempDirectory)/settings_artifactory deploy"
-    goals: '-Dsonar.login=$(SONAR_LOGIN_TOKEN) --settings settings.xml org.sonarsource.scanner.maven:sonar-maven-plugin:sonar deploy'
+    goals: '-Dsonar.login=$(SONAR_LOGIN_TOKEN) --settings settings.xml sonar:sonar deploy'
 
 #- task: PublishBuildArtifacts@1
   #inputs:
