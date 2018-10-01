@@ -7,9 +7,6 @@ pool:
   vmImage: 'Ubuntu 16.04'
 
 steps:
-- script: ls
-  workingDirectory: $(agent.homeDirectory)
-
 - task: DownloadSecureFile@1
   inputs:
     secureFile: settings_azure
