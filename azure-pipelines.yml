@@ -10,9 +10,9 @@ steps:
 - script: ls
   workingDirectory: $(agent.homeDirectory)
 
-#- task: DownloadSecureFile@1
-#  inputs:
-#    secureFile: settings_artifactory
+- task: DownloadSecureFile@1
+  inputs:
+    secureFile: settings_azure
 
 - task: Maven@3
   inputs:
@@ -23,8 +23,8 @@ steps:
     jdkArchitectureOption: 'x64'
     publishJUnitResults: false
     testResultsFiles: '**/TEST-*.xml'
-    #goals: "--settings $(Agent.TempDirectory)/settings_artifactory deploy"
-    goals: '-Dsonar.login=$(SONAR_LOGIN_TOKEN) --settings settings.xml verify sonar:sonar deploy'
+    goals: "-Dsonar.login=$(SONAR_LOGIN_TOKEN) --settings $(Agent.TempDirectory)/settings_azure verify sonar:sonar deploy"
+    #goals: '-Dsonar.login=$(SONAR_LOGIN_TOKEN) --settings settings.xml verify sonar:sonar deploy'
 
 #- task: PublishBuildArtifacts@1
   #inputs:
