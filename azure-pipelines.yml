@@ -26,26 +26,6 @@ steps:
     goals: "-Dsonar.login=$(SONAR_LOGIN_TOKEN) --settings $(Agent.TempDirectory)/settings_azure verify sonar:sonar deploy"
     #goals: '-Dsonar.login=$(SONAR_LOGIN_TOKEN) --settings settings.xml verify sonar:sonar deploy'
 
-- task: Docker@0
-  displayName: 'Build an image'
-  inputs:
-    azureSubscription: 'stack-tech - Service Endpoint'
-    azureContainerRegistry: '{"loginServer":"cdpregistry.azurecr.io", "id" : "/subscriptions/cad39a56-2385-44ef-a18c-83f6018e4c63/resourceGroups/stacktechb5a1/providers/Microsoft.ContainerRegistry/registries/stacktech8fbe"}'
-    imageName: 'cdpregistry.azurecr.io/stacktech:$(Build.BuildId)'
-
-- task: Docker@0
-  displayName: 'Push an image'
-  inputs:
-    azureSubscription: 'stack-tech - Service Endpoint'
-    azureContainerRegistry: '{"loginServer":"stacktech8fbe.azurecr.io", "id" : "/subscriptions/cad39a56-2385-44ef-a18c-83f6018e4c63/resourceGroups/stacktechb5a1/providers/Microsoft.ContainerRegistry/registries/stacktech8fbe"}'
-    action: 'Push an image'
-    imageName: 'cdpregistry.azurecr.io/stacktech:$(Build.BuildId)'
-    
-#- task: PublishBuildArtifacts@1
-  #inputs:
-    #pathtoPublish: '$(Build.SourcesDirectory)/target/simple-hellow-0.1.0.jar'
-    #artifactName: 'ehayanis.ms-helloworld'
-    #publishLocation: 'Server' # Options: container, filePath
-    #targetPath: # Required when publishLocation == FilePath
-    #parallel: false # Optional
-    #parallelCount: # Optional
+- script: |
+    docker login -u $(dockerId).azurecr.io -p $(pswd) $(dockerid).azurecr.io
+    docker push $(dockerId).azurecr.io/$(imageName)
