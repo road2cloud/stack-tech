@@ -26,6 +26,6 @@ steps:
     goals: "-Dsonar.login=$(SONAR_LOGIN_TOKEN) --settings $(Agent.TempDirectory)/settings_azure verify sonar:sonar deploy"
     #goals: '-Dsonar.login=$(SONAR_LOGIN_TOKEN) --settings settings.xml verify sonar:sonar deploy'
 
-- script: |
-    docker login -u $(dockerId).azurecr.io -p $(pswd) $(dockerid).azurecr.io
-    docker push $(dockerId).azurecr.io/$(imageName)
+#- script: |
+#    docker login -u $(dockerId).azurecr.io -p $(pswd) $(dockerid).azurecr.io
+#    docker push $(dockerId).azurecr.io/$(imageName)
