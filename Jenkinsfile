@@ -5,7 +5,11 @@ pipeline {
         maven 'Maven 3.3.9'
         jdk 'jdk8'
     }
-
+    
+    environment {
+        MAVEN_OPTS = ' -Dmaven.wagon.http.ssl.insecure=true -Dmaven.wagon.http.ssl.allowall=true -Dmaven.wagon.http.ssl.ignore.validity.dates=true'
+    }
+    
     stages {
         stage ('Initialize') {
             steps {
@@ -42,7 +46,6 @@ pipeline {
         
         stage ('Maven Deploy') {
             steps {
-                sh 'export MAVEN_OPTS=-Dmaven.wagon.http.ssl.insecure=true -Dmaven.wagon.http.ssl.allowall=true -Dmaven.wagon.http.ssl.ignore.validity.dates=true'
                 sh 'mvn --settings /Users/dimeh/Documents/workspace/pic/settings.xml -Dmaven.test.failure.ignore=true deploy'
             }
         }
