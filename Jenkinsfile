@@ -46,7 +46,7 @@ pipeline {
         
         stage ('Maven Deploy') {
             steps {
-                sh 'mvn deploy --settings /Users/dimeh/Documents/workspace/pic/settings.xml -DskipTests -Dmaven.wagon.http.ssl.insecure=true -Dmaven.wagon.http.ssl.allowall=true -Dmaven.wagon.http.ssl.ignore.validity.dates=true
+                sh 'mvn deploy --settings /Users/dimeh/Documents/workspace/pic/settings.xml -DskipTests -Dmaven.wagon.http.ssl.insecure=true -Dmaven.wagon.http.ssl.allowall=true -Dmaven.wagon.http.ssl.ignore.validity.dates=true'
 ' 
                 //sh 'mvn  -Dmaven.test.failure.ignore=true deploy'
             }
