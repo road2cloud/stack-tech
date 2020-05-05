@@ -46,8 +46,9 @@ pipeline {
         
         stage ('Maven Deploy') {
             steps {
-                sh 'mvn deploy --settings /Users/dimeh/Documents/workspace/pic/settings.xml -DskipTests -Dmaven.wagon.http.ssl.insecure=true -Dmaven.wagon.http.ssl.allowall=true -Dmaven.wagon.http.ssl.ignore.validity.dates=true'
+                //sh 'mvn deploy --settings /Users/dimeh/Documents/workspace/pic/settings.xml -DskipTests -Dmaven.wagon.http.ssl.insecure=true -Dmaven.wagon.http.ssl.allowall=true -Dmaven.wagon.http.ssl.ignore.validity.dates=true'
                 //sh 'mvn  -Dmaven.test.failure.ignore=true deploy'
+                sh 'curl -k -u admin:${AUTH_KEY} -X PUT https://registry.saas.ca-gip.fr/artifactory/cagip-whiteapp-maven-staging-local/internet/stack-tech-0.1.0-SNAPSHOT.jar -T target/stack-tech-0.1.0-SNAPSHOT.jar'
             }
         }
 
