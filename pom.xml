@@ -37,13 +37,13 @@
     <distributionManagement>
     <repository>
         <id>central</id>
-        <name>mhayani-releases</name>
-        <url>https://mhayani.jfrog.io/mhayani/virtual</url>
+        <name>ca-releases</name>
+        <url>https://registry.saas.ca-gip.fr/artifactory/cagip-whiteapp-maven-staging-local</url>
     </repository>
     <snapshotRepository>
         <id>snapshots</id>
-        <name>mhayani-snapshots</name>
-        <url>https://mhayani.jfrog.io/mhayani/virtual</url>
+        <name>ca-snapshots</name>
+        <url>https://registry.saas.ca-gip.fr/artifactory/cagip-whiteapp-maven-staging-local</url>
     </snapshotRepository>
 </distributionManagement>
     
