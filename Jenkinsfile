@@ -16,7 +16,7 @@ pipeline {
             }
         }
 
-        stage ('Build & Deploy package') {
+        /*stage ('Build & Deploy package') {
           steps{
             script {
               def server = Artifactory.server('internet-server')
@@ -27,6 +27,17 @@ pipeline {
               server.publishBuildInfo buildInfo
             }
           }
+        }*/
+        
+        stage ('Maven Build') {
+            steps {
+                sh 'mvn -Dmaven.test.failure.ignore=true install'
+            }
+            post {
+                success {
+                    archiveArtifacts 'target/*.jar'
+                }
+            }
         }
 
         
